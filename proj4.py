@@ -22,7 +22,7 @@ aminoDictionary = {'a':0, 'r':1, 'n':2, 'd':3, 'c':4, 'q':5, 'e':6, 'g':7,'h':8,
 'i':9, 'l':10, 'k':11, 'm':12, 'f':13, 'p':14, 's':15,'t':16, 'w':17, 'y':18, 
 'v':19}
 #Gap penalty
-gappenalty = -8
+gappenalty = -18
 #blosum[0][0] = 5
 #blosum50[0][1] = -2
 #blosum50[0][2] = -1
@@ -50,8 +50,48 @@ blosum50.append([-3,-3,-4,-5,-5,-1,-3,-3,-3,-3,-2,-3,-1,1,-4,-4,-3,15,2,-3])
 blosum50.append([-2,-1,-2,-3,-3,-1,-2,-3,2,-1,-1,-2,0,4,-3,-2,-2,2,8,-1])
 blosum50.append([0,-3,-3,-4,-1,-3,-3,-4,-4,4,1,-3,1,-1,-3,-2,0,-3,-1,5])
 
-seq1 = "heagawghee"
-seq2 = "pawheae"
+# matrix from project 3
+proj3Matrix = [[]]
+proj3Matrix[0] = [10,	0,	2,	4,	-1,	-3,	-3,	0,	-3,	0,	-3,	-4,	-3,	-1,	0,	-4,	-4,	-4,	-6,	0,	0,	-3,	-3,	  0, -6,0] #1
+proj3Matrix.append([0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0]) #2
+proj3Matrix.append([2,	0,	10,	6,	3,	3,	2,	2,	2,	0,	3,	3,	2,	1,	0,	1,	-1,	0,	1,	0,	0,	0,	-2,	0,	1,	0]) # 3
+proj3Matrix.append([4,	0,	6,	10,	5,	4,	3,	3,	3,	0,	3,	1,	1,	1,	0,	1,	0,	1,	2,	1,	0,	1,	0,	0,	0,	0]) # 4
+proj3Matrix.append([-1,	0,	3,	5,	10,	3,	3,	4,	4,	0,	2,	1,	2,	1,	0,  0,	1,	1,	1,	-1,	0,	-1,	0,	0,	-1,	0]) # 5
+proj3Matrix.append([-3,	0,	3,	4,	3,	8,	2,	2,	2,	0,	0,	1,	2,	0,	0,	0,	1,	1,	0,	-1,	0,	-1,	-1,	0,	-2,	0]) # 6
+proj3Matrix.append([-3,	0,	2,	3,	3,	2,	8,	0,	1,	0,	1,	1,	0,	-1,	0,	0,	-2,	-1,	0,	-2,	0,	-2,	-1,	0,	-3,	0]) # 7
+proj3Matrix.append([0,	0,	2,	3,	4,	2,	0,	8,	2,	0,	1,	-1,	0,	1,	0,	-2,	1,	-1,	0,	0,	0,	-3,	-3,	0,	-1,	0]) # 8
+proj3Matrix.append([-3,	0,	2,	3,	4,	2,	1,	2,	7,	0,	1,	-1,	1,	0,	0,	0,	0,	-1,	0,	-2,	0, -3,	-3,	0,	-3,	0]) # 9
+proj3Matrix.append([0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0]) # 10
+proj3Matrix.append([-3,	0,	3,	3,	2,	0,	1,	1,	1,	0,	7,	-1,	-1,	0,	0,	0,	-1,	0,	-2,	0,	0,	-2,	-2,	0,	-1,	0]) # 11
+proj3Matrix.append([-4,	0,	3,	1,	1,	1,	1,	-1,	-1,	0,	-1,	7,	-1,	-1,	0,	-1,	0,	-2,	-1,	-3,	0,	-3,	-3,	0,	-2,	0]) # 12
+proj3Matrix.append([-3,	0,	2,	1,	2,	2,	0,	0,	1,	0,	-1,	-1,	5,	-1,	0,	-2,	-1,	-1,	-2,	-3,	0,	-3,	-2,	0,	-2,	0]) # 13
+proj3Matrix.append([-1,	0,	1,	1,	1,	0,	-1,	1,	0,	0,	0,	-1,	-1,	5,	0,	-1,	-1,	-2,	-2,	-2,	0,	-2,	-3,	0,	-4,	0]) # 14
+proj3Matrix.append([0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0]) # 15
+proj3Matrix.append([-4,	0,	1,	1,	0,	0,	0,	-2,	0,	0,	0,	-1,	-2,	-1,	0,	5,	-3,	-1,	-2,	-4,	0,	-3,	-3,	0,	-4,	0]) # 16
+proj3Matrix.append([-4,	0,	-1,	0,	1,	1,	-2,	1,	0,	0,	-1,	0,	-1,	-1,	0,	-3,	4,	-3,	-3,	-2,	0,	-5,	-4,	0,	-4,	0]) # 17
+proj3Matrix.append([-4,	0,	0,	1,	1,	1,	-1,	-1,	-1,	0,	0,	-2,	-1,	-2,	0,	-1,	-3,	4,	-3,	-3,	0,	-4,	-3,	0,	-4,	0]) # 18
+proj3Matrix.append([-6,	0,	1,	2,	1,	0,	0,	0,	0,	0,	-2,	-1,	-2,	-2,	0,	-2,	-3,	-3,	3,	-3,	0,	-3,	-3,	0,	-5,	0]) # 19
+proj3Matrix.append([0,	0,	0,	1,	-1,	-1,	-2,	0,	-2,	0,	0,	-3,	-3,	-2,	0,	-4,	-2,	-3,	-3,	3,	0,	-4,	-4,	0,	-3,	0]) # 20
+proj3Matrix.append([0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0]) # 21
+proj3Matrix.append([-3,	0,	0,	1,	-1,	-1,	-2,	-3,	-3,	0,	-2,	-3,	-3,	-2,	0,	-3,	-5,	-4,	-3,	-4,	0,	3,	-4,	0,	-5,	0]) # 22
+proj3Matrix.append([-3,	0,	-2,	0,	0,	-1,	-1,	-3,	-3,	0,	-2,	-3,	-2,	-3,	0,	-3,	-4,	-3,	-3,	-4,	0,	-4,	2,	0,	-5,	0]) # 23
+proj3Matrix.append([0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0]) # 24
+proj3Matrix.append([-6,	0,	1,	0,	-1,	-2,	-3,	-1,	-3,	0,	-1,	-2,	-2,	-4,	0,	-4,	-4,	-4,	-5,	-3,	0,	-5,	-5,	0,	2,	0]) # 25
+proj3Matrix.append([0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0]) # 26
+
+# seq1 = "heagawghee"
+# seq2 = "pawheae"
+
+# Sequences
+seq1 = "vnvwtvwawwlyvpwagdalcvkyheylryhhctwptrmycgpitvnkgydtdmhetywwlyvpwacqfqearnklvqevpsckyssfypifvnipnmvktnrppgefltircstvtenlhktkggnth"
+seq2 = "vyvwtvwvwwwmgpwacdagldkyqpyeryncynlpnrstccvinvnkdyycdmhayvacqfqeaghylpqevrsckypvfycwdwircfkgcsqrppkkpksrcwgqgyfwdtdtsgygsq"
+# seq2 = "cqfqevyvpyvwvltwkvmvacdannknckkcdsmglgkhskyfihifingnkdgetlmhagyacqfqeagnylpgevpsckfmhfgcwfkivtflyyqsldpgipksqyshggiepneltkggnmr"
+# seq2 = "vyvvkvwvwqwpvpracdainygdnfkdgypmywlsgchisifvfqtsrlcyvrlawfaecfqqqrvkldqevesckyssfypqlvnipgmvktnrppgeflssrcsqvtenlhetkggnrh"
+# seq2 = "yqrhkmnwnyvpdtcpwsyyylmnyymslmmvpvpyqsctgtfcvstwyysyfsipsgpsvwpvgqqgadiavkkasflgdwmvnfmqvfgwerhkpqmdrirdegcpnwffrhdmta"
+# seq2 = "hqpqqdcavldtlvpvcphwsyyylmnyymsimmvpvpiqvftvtswvfteyyeyfkwpsgpycwpvdvygqpqqdcahmgghqepwqkmlnqppvdqkivqidrcdvlsrwcpervcemytqihqadravkpadflwtqqynvhtmfhwhrhpnpesgiryfgrdpcqrrnwdtf"
+# seq2 = "hvrlqdqapmytlvpvyspwsytydsnyyvyqmqkpvpwvwnyvtydvstwyywykwwpsgpntwsvgvyvahhgghwgttlymgtqpfmqklrmiiapcdlqmrwcgelwnehlfqdfcadravhpanflnttrvnhmtmkvrnsikpqekeefrfttscwmarfmitc"
+# seq2 = "hepqqdcapnfpwtlmtcvwswkwlsvgyanqmqnpvpwvwnyqtyfvstwyywykwwpsgpnthivyvyvkhhgghwgpvqymgfqpfmqgvrfpqgvggfyhriifelwtyrngadhwadravsgalfwlllvknshtikviysqpwppsgirkycrnpyqtvhpgtm"
+
 #gappenalty = -8
 scoringmatrix = [[00 for i in range(0,len(seq1)+1)] for j in range(0,len(seq2)+1)]
 directionmatrix = [["." for i in range(0,len(seq1)+1)] for j in range(0,len(seq2)+1)]
@@ -76,7 +116,8 @@ for r in range(1,len(scoringmatrix)):
         char2 = seq2[r-1]
         index1 = aminoDictionary[char1]
         index2 = aminoDictionary[char2]
-        diag += blosum50[index2][index1]
+        # diag += blosum50[index2][index1]
+        diag += proj3Matrix[index2][index1]
       #  diag += blosum50[aminoDictionary[seq2[r-1]]][aminoDictionary[seq1[c-1]]]
        # if(seq1[c-1] == seq2[r-1]):
        #     diag += 1
